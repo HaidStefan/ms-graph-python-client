@@ -294,3 +294,43 @@ class DriveItems():
         )
 
         return content
+
+    def get_my_drive_item_children_by_path(self, item_path: str) -> dict:
+        """Grab"s a DriveItem' Children Resources using the item_path
+
+        ### Parameters
+        ----
+        item_path : str
+            The path to the Item.
+
+        ### Returns
+        ----
+        dict :
+            A DriveItem resource object.
+        """
+        content = self.graph_session.make_request(
+            method="get",
+            endpoint=self.endpoint + f"/root:/{item_path}:/children"
+        )
+
+        return content
+
+    def get_my_drive_item_thumbnail(self, item_id: str) -> dict:
+        """Grab"s a DriveItem Resource Thumbnail using the Item ID
+
+        ### Parameters
+        ----
+        site_id : str
+            The User ID which to query the item from.
+
+        ### Returns
+        ----
+        dict :
+            A DriveItem resource object.    
+        """
+        content = self.graph_session.make_request(
+            method="get",
+            endpoint=f"/me/drive/items/{item_id}/thumbnails"
+        )
+
+        return content
